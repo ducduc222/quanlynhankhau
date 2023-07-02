@@ -9,6 +9,7 @@ import com.nhom71_quanlyhokhau.UI.QuanLyCovid.CachLyView.CachLyPanel;
 import com.nhom71_quanlyhokhau.UI.QuanLyCovid.KhaiBaoYTeView.KhaiBaoYTePanel;
 import com.nhom71_quanlyhokhau.UI.QuanLyCovid.TestCovidView.TestCovidHomePanel;
 
+import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
@@ -51,7 +52,7 @@ public class CovidHomeView extends javax.swing.JFrame {
         jButtonTestCovid = new javax.swing.JButton();
         ParentPanel = new java.awt.Panel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("QUẢN LÝ COVID");
         setBackground(new java.awt.Color(255, 255, 255));
 
