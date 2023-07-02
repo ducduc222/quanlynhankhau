@@ -19,7 +19,7 @@ public class KhaiTuCtrl {
             preparedStatement.setInt(2, khaiTu.getIdNguoiKhai());
             preparedStatement.setString(3, khaiTu.getLyDo());
             preparedStatement.setString(4, khaiTu.getNgayMat());
-            preparedStatement.setBoolean(4, khaiTu.isChetDoCovid());
+            preparedStatement.setBoolean(5, khaiTu.isChetDoCovid());
 
             preparedStatement.execute();
             preparedStatement.close();
