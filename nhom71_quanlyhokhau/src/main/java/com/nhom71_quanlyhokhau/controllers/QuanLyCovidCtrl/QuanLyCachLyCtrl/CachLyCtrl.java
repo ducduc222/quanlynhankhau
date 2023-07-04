@@ -25,6 +25,7 @@ public class CachLyCtrl {
             String sql = "SELECT cachly.*, nhankhau.* FROM cachly LEFT JOIN nhankhau ON cachly.idNhanKhau = nhankhau.id";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
+            
             while (resultSet.next()) {
                 CachLyBean cachLyBean = new CachLyBean();
                 NhanKhau nhanKhau = new NhanKhau();
