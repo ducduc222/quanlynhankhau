@@ -4,6 +4,7 @@
  */
 package com.nhom71_quanlyhokhau.UI.NhanKhauView;
 
+
 import com.nhom71_quanlyhokhau.Util.DateForm;
 import com.nhom71_quanlyhokhau.controllers.QuanLyNkHkCtrl.KhaiTuCtrl;
 import com.nhom71_quanlyhokhau.controllers.QuanLyNkHkCtrl.QuanLyNhanKhauCtrl.CheckCccdCtrl;
@@ -11,6 +12,7 @@ import com.nhom71_quanlyhokhau.models.KhaiTu;
 
 import javax.swing.*;
 import java.sql.SQLException;
+
 
 /**
  *
@@ -231,6 +233,7 @@ public class KhaiTuView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
         );
 
         pack();

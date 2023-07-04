@@ -46,6 +46,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
             danhsachnhankhau.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,12 +59,15 @@ public class CovidThongKePanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel = new javax.swing.JLabel();
         jComboGioiTinh = new javax.swing.JComboBox<>();
+
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+
         jButtonTimKiem = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDanhSach = new javax.swing.JTable();
+
         jDateTuNgay = new com.toedter.calendar.JDateChooser();
         jDateDenNgay = new com.toedter.calendar.JDateChooser();
         jCheckF0 = new javax.swing.JCheckBox();
@@ -74,6 +78,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
         jCheckTest = new javax.swing.JCheckBox();
         jCheckChet = new javax.swing.JCheckBox();
 
+
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -81,18 +86,22 @@ public class CovidThongKePanel extends javax.swing.JPanel {
         jLabel.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel.setText("Giới tính:");
 
+
         jComboGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Nam", "Nữ" }));
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setText("Ngày:");
 
+
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setText("=>");
+
 
         jButtonTimKiem.setBackground(new java.awt.Color(255, 255, 153));
         jButtonTimKiem.setText("Tìm kiếm");
         jButtonTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+
                 try {
                     jButtonTimKiemActionPerformed(evt);
                 } catch (SQLException e) {
@@ -100,6 +109,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
                 } catch (ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
+
             }
         });
 
@@ -123,6 +133,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
             TableColumn tableColumn = jTableDanhSach.getColumnModel().getColumn(column);
             tableColumn.setCellEditor(nonEditableCellEditor);
         }
+
         jTableDanhSach.setToolTipText("");
         jTableDanhSach.setEnabled(false);
         jTableDanhSach.setRowHeight(30);
@@ -135,6 +146,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jTableDanhSach);
+
 
         jDateTuNgay.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -154,6 +166,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
 
         jCheckChet.setText("Chết do covid");
 
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -168,6 +181,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+
                                 .addComponent(jDateTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                                 .addComponent(jLabel3)
@@ -196,6 +210,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1093, Short.MAX_VALUE)
                         .addComponent(jSeparator1)))
                 .addContainerGap(40, Short.MAX_VALUE))
+
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,6 +221,7 @@ public class CovidThongKePanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel)
                             .addComponent(jComboGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                             .addComponent(jCheckF0, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckF1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckFn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -234,12 +250,14 @@ public class CovidThongKePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
+
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
             .addGap(0, 1167, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -298,6 +316,14 @@ public class CovidThongKePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonTimKiem;
+    private javax.swing.JComboBox<String> jComboGioiTinh;
+    private javax.swing.JComboBox<String> jComboLoai;
+    private javax.swing.JLabel jLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JCheckBox jCheckCachLyTaiNha;
     private javax.swing.JCheckBox jCheckCachLyTaiTram;
     private javax.swing.JCheckBox jCheckChet;
@@ -305,12 +331,9 @@ public class CovidThongKePanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckF1;
     private javax.swing.JCheckBox jCheckFn;
     private javax.swing.JCheckBox jCheckTest;
-    private javax.swing.JComboBox<String> jComboGioiTinh;
     private com.toedter.calendar.JDateChooser jDateDenNgay;
     private com.toedter.calendar.JDateChooser jDateTuNgay;
-    private javax.swing.JLabel jLabel;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

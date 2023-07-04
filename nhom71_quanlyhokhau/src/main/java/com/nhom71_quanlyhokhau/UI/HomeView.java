@@ -8,6 +8,7 @@ import com.nhom71_quanlyhokhau.UI.HoKhauView.HoKhauHomeView;
 import com.nhom71_quanlyhokhau.UI.NhanKhauView.NhanKhauHomeView;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.sql.SQLException;
 
@@ -47,7 +48,9 @@ public class HomeView extends javax.swing.JFrame {
         jButtonThongKe = new javax.swing.JButton();
         ParentPanel = new java.awt.Panel();
 
+
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
         setTitle("NHÓM 71- QUẢN LÝ NHÂN KHẨU");
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -215,6 +218,7 @@ public class HomeView extends javax.swing.JFrame {
         ParentPanel.validate();
         ParentPanel.repaint();
     }//GEN-LAST:event_jButtonThongKeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Panel ParentPanel;

@@ -18,6 +18,5 @@ public class Nhom71_quanlyhokhau {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         LoginView loginView = new LoginView();
         loginView.setVisible(true);
-
     }
 }

@@ -159,6 +159,7 @@ public class CovidHomePanel extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addGap(285, 285, 285)
                             .addComponent(jTextSoF0, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+
                 .addContainerGap(485, Short.MAX_VALUE))
         );
         panel5Layout.setVerticalGroup(
@@ -239,6 +240,7 @@ public class CovidHomePanel extends javax.swing.JPanel {
                 .addGap(32, 32, 32))
         );
 
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -267,6 +269,7 @@ public class CovidHomePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(11, Short.MAX_VALUE))
+
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -276,14 +279,18 @@ public class CovidHomePanel extends javax.swing.JPanel {
             .addGap(0, 1042, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
                     .addGap(0, 6, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 717, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
         );
     }// </editor-fold>//GEN-END:initComponents
     public void loadData() throws SQLException, ClassNotFoundException {
@@ -295,7 +302,9 @@ public class CovidHomePanel extends javax.swing.JPanel {
         jTextSoF0.setText(String.valueOf(covidHomeCtrl.getSoF0()));
         jTextSoF1.setText(String.valueOf(covidHomeCtrl.getSoF1()));
         jTextSoFn.setText(String.valueOf(covidHomeCtrl.getSoFn()));
+
         jTextSoNguoiChet.setText(String.valueOf(covidHomeCtrl.getSoNguoiChetCovid()));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -305,16 +314,20 @@ public class CovidHomePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+
     private javax.swing.JTextField jTextCachLyTaiNha;
     private javax.swing.JTextField jTextCachLyTaiTram;
     private javax.swing.JTextField jTextDaKhaiBao;
     private javax.swing.JTextField jTextSoF0;
     private javax.swing.JTextField jTextSoF1;
     private javax.swing.JTextField jTextSoFn;
+
     private javax.swing.JTextField jTextSoNguoiChet;
+
     private java.awt.Panel panel3;
     private java.awt.Panel panel4;
     private java.awt.Panel panel5;

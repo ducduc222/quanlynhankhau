@@ -5,12 +5,14 @@
 package com.nhom71_quanlyhokhau.UI;
 
 
+
 import com.nhom71_quanlyhokhau.controllers.LoginCtrl;
 import com.nhom71_quanlyhokhau.models.User;
 
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.Arrays;
+
 
 /**
  *
@@ -23,7 +25,9 @@ public class LoginView extends javax.swing.JFrame {
      */
     public LoginView() {
         initComponents();
+
         setLocationRelativeTo(null);
+
     }
 
     /**
@@ -58,6 +62,7 @@ public class LoginView extends javax.swing.JFrame {
         jButtonLogin.setText("Login");
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+
                 try {
                     jButtonLoginActionPerformed(evt);
                 } catch (SQLException e) {
@@ -65,6 +70,7 @@ public class LoginView extends javax.swing.JFrame {
                 } catch (ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
+
             }
         });
 
@@ -116,6 +122,7 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, ClassNotFoundException {//GEN-FIRST:event_jButtonLoginActionPerformed
 
         if (jTextFieldUsername.getText().isEmpty() || jPassword.getPassword() == null) {
@@ -133,6 +140,7 @@ public class LoginView extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_jButtonLoginActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
