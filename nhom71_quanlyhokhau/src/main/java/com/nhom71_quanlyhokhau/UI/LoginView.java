@@ -5,6 +5,15 @@
 package com.nhom71_quanlyhokhau.UI;
 
 
+
+import com.nhom71_quanlyhokhau.controllers.LoginCtrl;
+import com.nhom71_quanlyhokhau.models.User;
+
+import javax.swing.*;
+import java.sql.SQLException;
+import java.util.Arrays;
+
+
 /**
  *
  * @author nguyenduc
@@ -16,6 +25,9 @@ public class LoginView extends javax.swing.JFrame {
      */
     public LoginView() {
         initComponents();
+
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -50,7 +62,15 @@ public class LoginView extends javax.swing.JFrame {
         jButtonLogin.setText("Login");
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLoginActionPerformed(evt);
+
+                try {
+                    jButtonLoginActionPerformed(evt);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+
             }
         });
 
@@ -102,44 +122,26 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        
+
+    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, ClassNotFoundException {//GEN-FIRST:event_jButtonLoginActionPerformed
+
+        if (jTextFieldUsername.getText().isEmpty() || jPassword.getPassword() == null) {
+            JOptionPane.showMessageDialog(null, "Hãy nhập username/passowrd");
+            return;
+        }
+        User user = new User();
+        user.setUsername(jTextFieldUsername.getText());
+        user.setPassword(Arrays.toString(jPassword.getPassword()));
+
+        LoginCtrl loginCtrl = new LoginCtrl();
+        if (loginCtrl.checkLogin(user)) {
+            Main main = new Main();
+            main.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginView().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogin;

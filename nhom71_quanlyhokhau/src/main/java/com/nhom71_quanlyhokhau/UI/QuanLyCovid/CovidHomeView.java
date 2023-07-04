@@ -9,6 +9,9 @@ import com.nhom71_quanlyhokhau.UI.QuanLyCovid.CachLyView.CachLyPanel;
 import com.nhom71_quanlyhokhau.UI.QuanLyCovid.KhaiBaoYTeView.KhaiBaoYTePanel;
 import com.nhom71_quanlyhokhau.UI.QuanLyCovid.TestCovidView.TestCovidHomePanel;
 
+
+import javax.swing.*;
+
 import java.awt.*;
 import java.sql.SQLException;
 
@@ -51,7 +54,9 @@ public class CovidHomeView extends javax.swing.JFrame {
         jButtonTestCovid = new javax.swing.JButton();
         ParentPanel = new java.awt.Panel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
         setTitle("QUẢN LÝ COVID");
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -109,7 +114,15 @@ public class CovidHomeView extends javax.swing.JFrame {
         jButtonThongKe.setText("THỐNG KÊ");
         jButtonThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonThongKeActionPerformed(evt);
+
+                try {
+                    jButtonThongKeActionPerformed(evt);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+
             }
         });
 
@@ -219,7 +232,9 @@ public class CovidHomeView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonCachLyActionPerformed
 
-    private void jButtonThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThongKeActionPerformed
+
+    private void jButtonThongKeActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, ClassNotFoundException {//GEN-FIRST:event_jButtonThongKeActionPerformed
+
         // TODO add your handling code here:
         CovidThongKePanel covidThongKePanel = new CovidThongKePanel();
         ParentPanel.removeAll();

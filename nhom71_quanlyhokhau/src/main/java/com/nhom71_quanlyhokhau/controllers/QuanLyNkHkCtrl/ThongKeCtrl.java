@@ -1,11 +1,7 @@
-package com.nhom71_quanlyhokhau.controllers.QuanLyCovidCtrl.QuanLyCachLyCtrl;
+package com.nhom71_quanlyhokhau.controllers.QuanLyNkHkCtrl;
 
-import com.nhom71_quanlyhokhau.Bean.QuanLyCovidBean.CachLyBean;
-import com.nhom71_quanlyhokhau.Bean.QuanLyCovidBean.TestCovidBean;
 import com.nhom71_quanlyhokhau.MysqlConnection;
-import com.nhom71_quanlyhokhau.models.CachLy;
 import com.nhom71_quanlyhokhau.models.NhanKhau;
-import com.nhom71_quanlyhokhau.models.TestCovid;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -15,31 +11,38 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CachLyCtrl {
-    public List<CachLyBean> getAllCachLy() throws SQLException, ClassNotFoundException {
-
-        List<CachLyBean> cachLyBeanList = new ArrayList<>();
-
-        Connection connection = MysqlConnection.getMysqlConnection();
+public class ThongKeCtrl {
+    public List<NhanKhau> locNhanKhau(String gioiTinh, String loai, int doTuoiTu, int doTuoiDen) throws SQLException, ClassNotFoundException {
+        List<NhanKhau> nhanKhauList = new ArrayList<>();
+        Connection connection  = MysqlConnection.getMysqlConnection();
         try {
-            String sql = "SELECT cachly.*, nhankhau.* FROM cachly LEFT JOIN nhankhau ON cachly.idNhanKhau = nhankhau.id";
+            String sqlGioiTinh = "";
+            if (gioiTinh.equals("Tất cả")) sqlGioiTinh = "(nhankhau.gioiTinh = 'Nam' OR nhankhau.gioiTinh = 'Nữ')";
+            else sqlGioiTinh = "gioitinh = '"+gioiTinh+"'";
+
+            String sqlDoTuoi = "";
+            if (doTuoiDen > 0 && doTuoiTu < doTuoiDen) {
+                sqlDoTuoi = "nhankhau.ngaySinh >= DATE_SUB(CURDATE(), INTERVAL "+doTuoiDen+" YEAR)\n" +
+                        "  AND nhankhau.ngaySinh <= DATE_SUB(CURDATE(), INTERVAL "+doTuoiTu+" YEAR) ";
+            }
+
+            String sqlLoai = "";
+            if (loai.equals("Tất cả")) sqlLoai = "";
+            if (loai.equals("Tạm trú")) sqlLoai = "tamtru.id > 0";
+            if (loai.equals("Tạm vắng")) sqlLoai = "tamvang.id > 0";
+
+
+
+            String sql = "SELECT  DISTINCT nhankhau.* FROM nhankhau LEFT JOIN tamvang ON  tamvang.idNhanKhau = nhankhau.id LEFT JOIN tamtru ON tamtru.idNhanKhau = nhankhau.id "
+                    +" WHERE "+sqlGioiTinh;
+            if (!sqlDoTuoi.equals("")) sql+=" AND "+sqlDoTuoi;
+            if (!sqlLoai.equals("")) sql+= " AND "+ sqlLoai;
+            System.out.println(sql);
+
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                CachLyBean cachLyBean = new CachLyBean();
                 NhanKhau nhanKhau = new NhanKhau();
-                CachLy cachLy = new CachLy();
-
-                cachLy.setId(resultSet.getInt("cachly.id"));
-                cachLy.setIdNhanKhau(resultSet.getInt("cachly.idNhanKhau"));
-                cachLy.setCachLyTaiTramYTe(resultSet.getBoolean("cachly.isCachLyTaiTramYTe"));
-                cachLy.setDiaDiemCachLy(resultSet.getString("cachly.diaDiemCachLy"));
-                cachLy.setTuNgay(resultSet.getString("cachly.tuNgay"));
-                cachLy.setDenNgay(resultSet.getString("cachly.denNgay"));
-                cachLy.setThuocDien(resultSet.getString("cachly.thuocDien"));
-                cachLy.setSoDienThoai(resultSet.getString("cachly.soDienThoai"));
-                cachLyBean.setCachLy(cachLy);
-
                 nhanKhau.setId(resultSet.getInt("nhankhau.id"));
                 nhanKhau.setHoTen(resultSet.getString("nhankhau.hoTen"));
                 nhanKhau.setNgaySinh(resultSet.getString("nhankhau.ngaySinh"));
@@ -56,15 +59,19 @@ public class CachLyCtrl {
                 nhanKhau.setNoiLamViec(resultSet.getString("nhankhau.noiLamViec"));
                 nhanKhau.setIdNguoiTao(resultSet.getInt("nhankhau.idNguoiTao"));
                 nhanKhau.setNgayTao(resultSet.getString("nhankhau.ngayTao"));
-                cachLyBean.setNhanKhau(nhanKhau);
 
-                cachLyBeanList.add(cachLyBean);
+                nhanKhauList.add(nhanKhau);
             }
+
+            preparedStatement.close();
+
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra");
+            System.out.println(e.getMessage());
             return null;
         }
 
-        return cachLyBeanList;
+        return nhanKhauList;
     }
 }

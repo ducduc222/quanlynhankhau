@@ -6,6 +6,9 @@ package com.nhom71_quanlyhokhau.UI;
 
 import com.nhom71_quanlyhokhau.UI.NhanKhauView.ThongTinChiTietNhanKhau;
 import com.nhom71_quanlyhokhau.controllers.QuanLyNkHkCtrl.QuanLyNhanKhauCtrl.NhanKhauCtrl;
+
+import com.nhom71_quanlyhokhau.controllers.QuanLyNkHkCtrl.ThongKeCtrl;
+
 import com.nhom71_quanlyhokhau.models.NhanKhau;
 
 import javax.swing.*;
@@ -47,10 +50,8 @@ public class ThongKeView extends javax.swing.JPanel {
         jTextTuoi1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextTuoi2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextNam1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextNam2 = new javax.swing.JTextField();
+
+
         jButtonTimKiem = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -61,12 +62,16 @@ public class ThongKeView extends javax.swing.JPanel {
         jLabel.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel.setText("Giới tính:");
 
-        jComboGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Nam", "Nữ"}));
+
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel1.setText("Loại:");
 
-        jComboLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Tất cả", "Chính thức", "Tạm trú", "Tạm vắng"}));
+
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setText("Độ tuổi:");
@@ -74,27 +79,30 @@ public class ThongKeView extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setText("=>");
 
-        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel4.setText("Thời gian cư trú:");
 
-        jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel5.setText("=>");
 
         jButtonTimKiem.setBackground(new java.awt.Color(255, 255, 153));
         jButtonTimKiem.setText("Tìm kiếm");
         jButtonTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTimKiemActionPerformed(evt);
+
+                try {
+                    jButtonTimKiemActionPerformed(evt);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+
             }
         });
 
         jTableDanhSach.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         jTableDanhSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
+
+
             },
                 new String [] {
                         "ID", "Họ tên", "Giới tính", "Ngày sinh", "Địa chỉ"
@@ -112,7 +120,9 @@ public class ThongKeView extends javax.swing.JPanel {
             tableColumn.setCellEditor(nonEditableCellEditor);
         }
         jTableDanhSach.setToolTipText("");
-        jTableDanhSach.setEnabled(true);
+
+        jTableDanhSach.setEnabled(false);
+
         jTableDanhSach.setRowHeight(30);
         jTableDanhSach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -151,18 +161,11 @@ public class ThongKeView extends javax.swing.JPanel {
                                 .addComponent(jTextTuoi2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jComboGioiTinh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextNam1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextNam2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboLoai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
+                        .addComponent(jLabel1)
+                        .addGap(113, 113, 113)
+                        .addComponent(jComboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                         .addGap(18, 18, 18)
                         .addComponent(jButtonTimKiem))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -181,16 +184,16 @@ public class ThongKeView extends javax.swing.JPanel {
                             .addComponent(jComboGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+
+                        .addGap(25, 25, 25)
+
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextTuoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextTuoi2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextNam1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextNam2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+
+                            .addComponent(jTextTuoi2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,6 +206,11 @@ public class ThongKeView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     private void loadData() throws SQLException, ClassNotFoundException {
+
+        jTextTuoi1.setText("-1");
+        jTextTuoi2.setText("-1");
+
+
         if (danhsachnhankhau.getRowCount()>0) danhsachnhankhau.setRowCount(0);
         NhanKhauCtrl nhanKhauCtrl = new NhanKhauCtrl();
         List<NhanKhau> nhanKhauList = nhanKhauCtrl.getDanhSachNhanKhau();
@@ -218,8 +226,29 @@ public class ThongKeView extends javax.swing.JPanel {
             danhsachnhankhau.addRow(row);
         }
     }
-    private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
+
+    private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, ClassNotFoundException {//GEN-FIRST:event_jButtonTimKiemActionPerformed
         // TODO add your handling code here:
+        String gioiTinh = (String) jComboGioiTinh.getSelectedItem();
+        String loai = (String) jComboLoai.getSelectedItem();
+        int doTuoiTu = Integer.parseInt(jTextTuoi1.getText());
+        int doTuoiDen = Integer.parseInt(jTextTuoi2.getText());
+
+        ThongKeCtrl thongKeCtrl = new ThongKeCtrl();
+        List<NhanKhau> nhanKhauList = thongKeCtrl.locNhanKhau(gioiTinh, loai, doTuoiTu, doTuoiDen);
+        if (danhsachnhankhau.getRowCount()>0) danhsachnhankhau.setRowCount(0);
+        for (int i = 0; i<nhanKhauList.size(); i++) {
+            int idn = nhanKhauList.get(i).getId();
+            String hoTenn = nhanKhauList.get(i).getHoTen();
+            String ngaySinhn = nhanKhauList.get(i).getNgaySinh();
+            String gioiTinhn = nhanKhauList.get(i).getGioiTinh();
+            String diaChin = nhanKhauList.get(i).getDiaChiHienTai();
+
+            Object[] row = {idn, hoTenn, gioiTinhn, ngaySinhn, diaChin};
+            danhsachnhankhau.addRow(row);
+        }
+
+
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
 
     private void jTableDanhSachMouseClicked(java.awt.event.MouseEvent evt) throws SQLException, ClassNotFoundException {//GEN-FIRST:event_jTableDanhSachMouseClicked
@@ -246,13 +275,11 @@ public class ThongKeView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableDanhSach;
-    private javax.swing.JTextField jTextNam1;
-    private javax.swing.JTextField jTextNam2;
+
     private javax.swing.JTextField jTextTuoi1;
     private javax.swing.JTextField jTextTuoi2;
     // End of variables declaration//GEN-END:variables

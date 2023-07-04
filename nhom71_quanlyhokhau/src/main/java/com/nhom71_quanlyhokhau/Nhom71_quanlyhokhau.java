@@ -16,9 +16,7 @@ import java.sql.SQLException;
 public class Nhom71_quanlyhokhau {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        LoginView loginView = new LoginView();
-//        loginView.setVisible(true);
-        HomeView homeView = new HomeView();
-        homeView.setVisible(true);
+        LoginView loginView = new LoginView();
+        loginView.setVisible(true);
     }
 }

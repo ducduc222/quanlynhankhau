@@ -9,6 +9,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CovidHomeCtrl {
+    public int getSoNguoiChetCovid() throws SQLException, ClassNotFoundException {
+        Connection connection = MysqlConnection.getMysqlConnection();
+        try {
+            String sql = "SELECT COUNT(DISTINCT idNhanKhau) FROM khaitu WHERE isChetDoCovid = 1";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) return resultSet.getInt(1);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Có lỗi xảy ra");
+            return -1;
+        }
+        return -1;
+    }
     public int getSoDaKhaiBao() throws SQLException, ClassNotFoundException {
         Connection connection = MysqlConnection.getMysqlConnection();
         try {

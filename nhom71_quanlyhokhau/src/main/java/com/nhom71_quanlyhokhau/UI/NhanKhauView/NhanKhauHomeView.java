@@ -238,7 +238,6 @@ public class NhanKhauHomeView extends javax.swing.JPanel {
         if (evt.getClickCount()==2) {
             int row = jTableNhanKhau.getSelectedRow();
             int IdNhanKhau = (int) jTableNhanKhau.getValueAt(row, 0);
-            System.out.println(IdNhanKhau);
             ThongTinChiTietNhanKhau thongTinChiTietNhanKhau = new ThongTinChiTietNhanKhau(IdNhanKhau);
             thongTinChiTietNhanKhau.setVisible(true);
         }
@@ -260,5 +259,5 @@ public class NhanKhauHomeView extends javax.swing.JPanel {
     private javax.swing.JTable jTableNhanKhau;
     private javax.swing.JTextField jTextTimKiemMaNK;
     // End of variables declaration//GEN-END:variables
-    DefaultTableModel danhsachnhankhau;
+    private  DefaultTableModel danhsachnhankhau;
 }
